@@ -1,8 +1,8 @@
 // import react from 'react';
 
-import { useState } from "react";
+import { useState, } from "react";
 
-function Home(){
+function Home(props){
     const [text, setText] = useState("");
     
     //handle onchange
@@ -33,10 +33,10 @@ function Home(){
     }
     return(
         <>
-            <div className="container mt-5">
+            <div className={`container mt-5 text-${props.mode === 'light'?'dark':'light'}`} >
                 <h1>Enter Text below:</h1>  
-                <div className="mb-2">
-                    <textarea id="textBox" value={text} onChange={handleOnChange} cols="100" rows="5" autoFocus></textarea>    
+                <div className="mb-3">
+                    <textarea id="textBox"  style={{backgroundColor:props.mode==='light'?'white':'grey',color:props.mode==='light'?'black':'white'}} value={text} onChange={handleOnChange} className="form-control" rows="5" autoFocus></textarea>    
                 </div>
                 <button className="btn btn-primary mx-2" onClick={handleUppercase}>Uppercase</button>
                 <button className="btn btn-primary mx-2" onClick={handleLowercase}>Lowercase</button>
